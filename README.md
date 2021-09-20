@@ -178,7 +178,7 @@ extension ItemsViewController: UITableViewDataSource {
 
 ``` 
 
-### Store the publisher in a struct as a static variable(Refactoring)  
+### Refactoring: Store the publisher in a struct as a static variable   
 This way other pieces of your project could also get notified of new items.
 
 #### **[AddItemViewController](https://github.com/YamamotoDesu/Replace-Delegation-With-Combine/blob/main/CombineSample/AddItemViewController.swift)**  
