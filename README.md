@@ -1,5 +1,5 @@
 # Replace Delegation With Combine 
-How to implement a common iOS design pattern, delegation, using Combine’s publishers and subscribers. 
+How to implement a common iOS design pattern, delegation, using Combine’s publishers and subscribers.   
 We will compare the standard delegation approach with one using Combine.
 
 ## Getting Started 
