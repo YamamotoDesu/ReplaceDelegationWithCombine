@@ -134,7 +134,6 @@ class ItemsViewController: UIViewController {
     @IBAction func addButtonTapped(_ sender: UIButton) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let addItemViewController = storyBoard.instantiateViewController(withIdentifier: "addItemViewController") as! AddItemViewController
-        // addItemViewController.delegate = self
         
         addItemViewController.newItem
             .handleEvents(receiveOutput: { [unowned self] newItem in
