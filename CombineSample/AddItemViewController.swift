@@ -12,6 +12,11 @@ protocol AddItemViewControllerDelegate: AnyObject {
     func didAddItem(_ item: String)
 }
 
+struct NewItem {
+    static var newItem
+    = PassthroughSubject<String, Never>()
+}
+
 class AddItemViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -19,18 +24,16 @@ class AddItemViewController: UIViewController {
     }
     
 //    weak var delegate: AddItemViewControllerDelegate?
-//    
+//
 //    @IBAction func doneButtonTapped(_ sender: UIButton) {
 //        delegate?.didAddItem(textField.text!)
 //        self.dismiss(animated: true, completion: nil)
 //    }
     
     @IBAction func doneButtonTapped(_ sender: UIButton) {
-        newItem.send(textField.text!)
+        NewItem.newItem.send(textField.text!)
         self.dismiss(animated: true, completion: nil)
     }
-    
-    let newItem = PassthroughSubject<String, Never>()
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var doneButton: UIButton!

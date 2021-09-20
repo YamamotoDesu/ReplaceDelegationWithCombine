@@ -20,7 +20,7 @@ class ItemsViewController: UIViewController {
         let addItemViewController = storyBoard.instantiateViewController(withIdentifier: "addItemViewController") as! AddItemViewController
         // addItemViewController.delegate = self
         
-        addItemViewController.newItem
+        NewItem.newItem
             .handleEvents(receiveOutput: { [unowned self] newItem in
                 self.updateTableView(withItem: newItem)
             })
