@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class ItemsViewController: UIViewController {
 
@@ -17,30 +18,51 @@ class ItemsViewController: UIViewController {
     @IBAction func addButtonTapped(_ sender: UIButton) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let addItemViewController = storyBoard.instantiateViewController(withIdentifier: "addItemViewController") as! AddItemViewController
-        addItemViewController.delegate = self
+        // addItemViewController.delegate = self
+        
+        addItemViewController.newItem
+            .handleEvents(receiveOutput: { [unowned self] newItem in
+                self.updateTableView(withItem: newItem)
+            })
+            .sink { _ in }
+            .store(in: &subscriptions)
         
         self.present(addItemViewController, animated: true, completion: nil)
     }
-
-    var items: [String] = []
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var addButton: UIButton!
-}
-
-extension ItemsViewController: AddItemViewControllerDelegate {
-    func didAddItem(_ item: String) {
+    
+    func updateTableView(withItem item: String) {
         self.items.append(item)
         self.tableView.beginUpdates()
         self.tableView.insertRows(
             at: [
-                .init(row: items.count - 1,
+                .init(row: self.items.count - 1,
                       section: 0)
             ],
             with: .automatic
         )
         self.tableView.endUpdates()
     }
+
+    var subscriptions = Set<AnyCancellable>()
+    var items: [String] = []
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addButton: UIButton!
 }
+
+//extension ItemsViewController: AddItemViewControllerDelegate {
+//    func didAddItem(_ item: String) {
+//        self.items.append(item)
+//        self.tableView.beginUpdates()
+//        self.tableView.insertRows(
+//            at: [
+//                .init(row: items.count - 1,
+//                      section: 0)
+//            ],
+//            with: .automatic
+//        )
+//        self.tableView.endUpdates()
+//    }
+//}
 
 extension ItemsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
