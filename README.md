@@ -10,7 +10,7 @@ We will compare the standard delegation approach with one using Combine.
     </tr>
 </table>
 
-### Traditional approach 
+### Traditional Approach 
 #### **[ItemsViewController](https://github.com/YamamotoDesu/Replace-Delegation-With-Combine/blob/main/CombineSample/ItemsViewController.swift)**  
 ```swift 
 import UIKit
