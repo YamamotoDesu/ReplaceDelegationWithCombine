@@ -43,6 +43,10 @@
                                             </tableViewCell>
                                         </prototypes>
                                         <sections/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="d3J-eC-1M8"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="m0X-1p-cpg"/>
+                                        </connections>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Jcc-rQ-hPe">
                                         <rect key="frame" x="0.0" y="789" width="414" height="29"/>

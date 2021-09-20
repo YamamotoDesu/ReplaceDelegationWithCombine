@@ -12,8 +12,6 @@ class ItemsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.dataSource = self
-        
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
